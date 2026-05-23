@@ -285,3 +285,348 @@ pip uninstall package_name
 
 `pip` helps developers install external libraries required for projects.
 
+
+Day 2
+
+## What is dynamic typing in Python?
+
+Python is a dynamically typed language, meaning Python automatically determines the data type of a variable at runtime.
+
+Example:
+
+```python
+age = 25
+name = "Keerthi"
+height = 5.8
+```
+
+Python automatically detects:
+
+- `25` → integer (`int`)
+- `"Keerthi"` → string (`str`)
+- `5.8` → float
+
+A variable can also change type:
+
+```python
+x = 10
+x = "Hello"
+```
+
+Dynamic typing makes Python flexible and easier to write.
+
+## What is the difference between mutable and immutable data types?
+
+Mutable objects can be changed after creation, while immutable objects cannot be changed.
+
+### Mutable data types
+Examples:
+- `list`
+- `dictionary`
+- `set`
+
+Example:
+
+```python
+numbers = [10, 20, 30]
+
+numbers[0] = 100
+
+print(numbers)
+```
+
+### Immutable data types
+Examples:
+- `int`
+- `float`
+- `string`
+- `tuple`
+- `bool`
+
+Example:
+
+```python
+name = "hello"
+
+# Not allowed
+name[0] = "H"
+```
+
+Difference:
+
+- Mutable → can be modified
+- Immutable → cannot be modified
+
+## What are local and global variables?
+
+Variables in Python can be local or global depending on where they are created.
+
+### Global variable
+A global variable is defined outside a function and can be accessed throughout the program.
+
+Example:
+
+```python
+name = "Keerthi"
+
+def greet():
+    print(name)
+
+greet()
+```
+
+### Local variable
+A local variable is defined inside a function and can only be accessed inside that function.
+
+Example:
+
+```python
+def greet():
+    message = "Hello"
+
+    print(message)
+
+greet()
+```
+
+Difference:
+
+- Global variable → created outside a function
+- Local variable → created inside a function
+
+## What is the purpose of the return statement in a function?
+
+The `return` statement is used to send a value back from a function.
+
+It allows a function to produce a result that can be stored or used later.
+
+Example:
+
+```python
+def add(a, b):
+    return a + b
+
+result = add(10, 20)
+
+print(result)
+```
+
+Output:
+
+```text
+30
+```
+- `return` → sends value back from a function
+
+## What is list comprehension?
+
+List comprehension is a short and efficient way to create lists in Python.
+
+Instead of using multiple lines with loops, list comprehension creates lists in a single line.
+
+Example:
+
+```python
+numbers = [i * i for i in range(1, 6)]
+
+print(numbers)
+```
+
+Output:
+
+```text
+[1, 4, 9, 16, 25]
+```
+
+Example with condition:
+
+```python
+even_numbers = [i for i in range(1, 11) if i % 2 == 0]
+
+print(even_numbers)
+```
+
+List comprehension makes code shorter, cleaner, and easier to read.
+
+## Difference between break, continue, and pass
+
+`break`, `continue`, and `pass` are loop control statements in Python.
+
+### break
+Stops the loop completely.
+
+Example:
+
+```python
+for i in range(1, 6):
+    if i == 3:
+        break
+
+    print(i)
+```
+
+### continue
+Skips the current iteration and moves to the next iteration.
+
+Example:
+
+```python
+for i in range(1, 6):
+    if i == 3:
+        continue
+
+    print(i)
+```
+
+### pass
+Does nothing and acts as a placeholder.
+
+Example:
+
+```python
+for i in range(1, 6):
+    if i == 3:
+        pass
+
+    print(i)
+```
+
+Difference:
+
+- `break` → stop loop
+- `continue` → skip iteration
+- `pass` → do nothing
+
+## What is recursion? Give a simple example.
+
+Recursion is a programming technique where a function calls itself to solve a problem.
+
+A recursive function must have a stopping condition called a **base case**.
+
+Example:
+
+```python
+def countdown(n):
+    if n == 0:
+        return
+
+    print(n)
+    countdown(n - 1)
+
+countdown(5)
+```
+
+Output:
+
+```text
+5
+4
+3
+2
+1
+```
+
+In recursion, a function repeatedly calls itself until the base condition is reached.
+
+## What is a lambda function?
+
+A lambda function is a small anonymous function written in one line.
+
+It is mainly used for short and simple operations.
+
+Syntax:
+
+```python
+lambda arguments: expression
+```
+
+Example:
+
+```python
+square = lambda num: num * num
+
+print(square(5))
+```
+
+Output:
+
+```text
+25
+```
+
+Difference:
+
+- Normal function → uses `def`
+- Lambda function → short one-line function
+
+## What is the difference between `is` and `==`?
+
+`==` compares values, while `is` compares object identity (memory location).
+
+### `==`
+Checks if values are equal.
+
+Example:
+
+```python
+a = [1, 2, 3]
+b = [1, 2, 3]
+
+print(a == b)
+```
+
+Output:
+
+```text
+True
+```
+
+### `is`
+Checks if two variables refer to the same object in memory.
+
+Example:
+
+```python
+a = [1, 2, 3]
+b = a
+
+print(a is b)
+```
+
+Output:
+
+```text
+True
+```
+
+Difference:
+
+- `==` → compares values
+- `is` → compares memory/object identity
+
+## What are docstrings and why are they important?
+
+Docstrings (documentation strings) are used to explain the purpose of functions, classes, or modules in Python.
+
+They are written using triple quotes.
+
+Example:
+
+```python
+def add(a, b):
+    """
+    Returns the sum of two numbers.
+    """
+
+    return a + b
+```
+
+Importance of docstrings:
+
+- Improve code readability
+- Help explain function purpose
+- Useful for teamwork and maintenance
+- Provide documentation for developers
+
+Docstrings make code easier to understand and maintain.
+
