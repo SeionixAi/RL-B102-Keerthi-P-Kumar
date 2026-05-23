@@ -145,3 +145,67 @@ print(df["Age"].mean())
 ```
 
 Pandas is widely used in Data Science and AI for data preprocessing and analysis.
+
+## Pandas - Data Cleaning and Preprocessing
+
+### 1. What is data cleaning in Pandas?
+
+Data cleaning means fixing or removing incorrect, missing, or inconsistent data.
+
+Pandas helps by:
+- removing null values
+- filling missing values
+- removing duplicates
+
+Example:
+```python
+df.dropna()
+df.fillna(0)
+```
+
+---
+
+### 2. Difference between loc and iloc
+
+- `loc` → label-based indexing
+- `iloc` → index-based (position)
+
+Example:
+```python
+df.loc[0, "Age"]
+df.iloc[0, 1]
+```
+
+---
+
+### 3. Missing values
+
+Missing values are empty or undefined data.
+
+Pandas handles them using:
+```python
+df.dropna()
+df.fillna(0)
+```
+
+---
+
+### 4. groupby()
+
+Used to group data and perform aggregations.
+
+Example:
+```python
+df.groupby("Dept")["Salary"].mean()
+```
+
+---
+
+### 5. Pandas in AI preprocessing
+
+Pandas is used to:
+- clean data
+- handle missing values
+- transform data
+- prepare datasets for AI models
+
