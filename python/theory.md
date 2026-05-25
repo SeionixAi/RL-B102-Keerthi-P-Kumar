@@ -630,3 +630,354 @@ Importance of docstrings:
 
 Docstrings make code easier to understand and maintain.
 
+## What is File Handling in Python?
+
+File handling is the process of creating, reading, writing, updating, and deleting files in Python. It is used to store and retrieve data permanently.
+
+We use the `open()` function to work with files.
+
+Syntax:
+
+file = open("filename", "mode")
+
+### File Modes
+
+- `r` → Read mode (default). Used to read a file.
+- `w` → Write mode. Overwrites existing content.
+- `a` → Append mode. Adds new content without deleting old data.
+- `x` → Create mode. Creates a new file.
+- `b` → Binary mode. Used for images, videos, etc.
+- `t` → Text mode (default).
+
+Combined modes:
+
+- `r+` → Read and write
+- `w+` → Write and read
+- `a+` → Append and read
+
+File handling is important for reading datasets, saving logs, storing results, and working with files permanently.
+
+## Difference between read(), readline(), and readlines()
+
+Python provides different methods to read files.
+
+### read()
+
+- Reads the entire file content at once.
+- Returns a string.
+
+Example:
+
+content = file.read()
+
+### readline()
+
+- Reads one line at a time.
+- Returns a string.
+- Each call reads the next line.
+
+Example:
+
+line = file.readline()
+
+### readlines()
+
+- Reads all lines and stores them in a list.
+- Each line becomes one item in the list.
+
+Example:
+
+lines = file.readlines()
+
+Difference:
+
+- `read()` → complete file
+- `readline()` → one line
+- `readlines()` → all lines as a list
+
+## What is Exception Hierarchy in Python?
+
+An exception is an error that occurs during program execution.
+
+Python exceptions follow a hierarchy (parent-child structure). The main parent class is `Exception`, and specific exceptions inherit from it.
+
+Example hierarchy:
+
+BaseException
+└── Exception
+    ├── ArithmeticError
+    │   └── ZeroDivisionError
+    ├── LookupError
+    │   ├── IndexError
+    │   └── KeyError
+    ├── ValueError
+    ├── TypeError
+    └── FileNotFoundError
+
+Common exceptions:
+
+- `ZeroDivisionError` → division by zero
+- `ValueError` → invalid value
+- `TypeError` → wrong data type operation
+- `IndexError` → invalid list index
+- `KeyError` → missing dictionary key
+- `FileNotFoundError` → file not found
+
+Exception hierarchy helps Python organize errors and allows developers to catch either specific or general exceptions.
+
+## Difference between try-except and try-except-finally
+
+### try-except
+
+Used to handle errors and prevent program crashes.
+
+Syntax:
+
+try:
+    risky code
+except:
+    handle error
+
+Example:
+
+try:
+    x = 10 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+
+### try-except-finally
+
+Used to handle errors and execute code that must run whether an error occurs or not.
+
+Syntax:
+
+try:
+    risky code
+except:
+    handle error
+finally:
+    always execute
+
+Example:
+
+try:
+    x = 10 / 0
+except ZeroDivisionError:
+    print("Error")
+finally:
+    print("Finished")
+
+Difference:
+
+- `try-except` → handles errors
+- `try-except-finally` → handles errors and always executes cleanup code
+
+`finally` is commonly used for closing files, database connections, and cleanup operations.
+
+## Purpose of the with Statement in Python
+
+The `with` statement is used to work with resources (such as files) safely and automatically.
+
+It automatically closes the file after use, even if an error occurs.
+
+Syntax:
+
+with open("file.txt", "mode") as file:
+    # work with file
+
+Example:
+
+with open("data.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+Advantages:
+
+- Automatically closes files
+- Cleaner and shorter code
+- Prevents resource leaks
+- Safer than manually calling `close()`
+
+`with` is commonly used in file handling, database connections, and resource management.
+
+## What are Iterators in Python?
+
+An iterator is an object that allows accessing elements of a collection one at a time.
+
+### Iterable
+An iterable is an object that can be looped over (e.g., list, tuple, string).
+
+### Iterator
+An iterator is an object that returns elements one by one using the `next()` function.
+
+### Creating an Iterator
+
+it = iter([1, 2, 3])
+
+### Accessing Elements
+
+next(it)  # 1
+next(it)  # 2
+next(it)  # 3
+
+After all elements are consumed, Python raises StopIteration.
+
+### How for loop works internally
+
+A for loop uses iter() and next() internally and stops when StopIteration is raised.
+
+### Advantages of Iterators
+
+- Memory efficient
+- Useful for large datasets
+- Supports lazy evaluation (data generated on demand)
+
+## What are Generators in Python?
+
+Generators are special functions that return values one at a time using the `yield` keyword instead of `return`.
+
+### How Generators Work
+
+- `yield` produces a value and pauses the function
+- Execution resumes from where it stopped on the next call
+
+### Example
+
+def my_gen():
+    yield 1
+    yield 2
+    yield 3
+
+### Usage
+
+gen = my_gen()
+
+next(gen)  # 1
+next(gen)  # 2
+next(gen)  # 3
+
+After all values are produced, StopIteration is raised.
+
+### Difference between Function and Generator
+
+| Function | Generator |
+|----------|-----------|
+| Uses return | Uses yield |
+| Returns once | Returns multiple values over time |
+| Stores full result | Produces values one at a time |
+| Memory heavy | Memory efficient |
+
+### Advantages
+
+- Saves memory
+- Useful for large datasets
+- Supports streaming data processing
+- Used in ML pipelines and data processing workflows
+
+## What is *args and **kwargs?
+
+`*args` and `**kwargs` are used in Python functions to pass variable-length arguments.
+
+### *args
+
+- Used to pass multiple positional arguments
+- Stored as a tuple
+
+Example:
+
+def add(*args):
+    return sum(args)
+
+add(1, 2, 3, 4)
+
+### **kwargs
+
+- Used to pass multiple keyword arguments
+- Stored as a dictionary
+
+Example:
+
+def person(**kwargs):
+    print(kwargs)
+
+person(name="Keerthi", age=25)
+
+### Difference
+
+| Feature | *args | **kwargs |
+|--------|------|----------|
+| Type | Tuple | Dictionary |
+| Input | Positional arguments | Keyword arguments |
+
+### Key Idea
+
+- *args → multiple values
+- **kwargs → multiple named values
+
+## What is Type Casting in Python?
+
+Type casting is the process of converting one data type into another.
+
+### Types of Type Casting
+
+1. Implicit Casting (Automatic)
+Python automatically converts smaller data types to larger ones.
+
+Example:
+
+x = 10
+y = 2.5
+print(x + y)  # 12.5
+
+2. Explicit Casting (Manual)
+We manually convert data types using functions.
+
+Common functions:
+- int()
+- float()
+- str()
+- list()
+- tuple()
+
+### Examples
+
+String to Integer:
+x = "10"
+y = int(x)
+
+Integer to String:
+x = 10
+y = str(x)
+
+Float to Integer:
+x = 10.9
+y = int(x)  # 10
+
+### Key Idea
+Type casting is used to convert data types so operations between them are possible.
+
+## What are Built-in Functions in Python?
+
+Built-in functions are pre-defined functions provided by Python that can be used directly without importing any module.
+
+### Examples of Built-in Functions
+
+- print() → displays output
+- input() → takes user input
+- type() → returns data type
+- len() → returns length of an object
+- sum() → returns sum of elements
+
+### Other Common Built-ins
+
+- max()
+- min()
+- abs()
+- round()
+- sorted()
+- range()
+
+### Key Idea
+
+Built-in functions help perform common tasks easily without writing custom code.
+
